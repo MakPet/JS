@@ -1,6 +1,10 @@
 alert('Hello, World!');
+
 let currentUserName = prompt("Who is your name?", "Name");
-document.getElementById("name-user").innerHTML = currentUserName;
+let resultName = ( currentUserName == "") ? "НеизвестныйПользователь" : currentUserName;
+
+document.getElementById("name-user").innerHTML = resultName;
+
 
 /*
         Итак, инструкции — синтаксические конструкции и команды, которые выполняют действия.
@@ -471,7 +475,7 @@ document.getElementById("name-user").innerHTML = currentUserName;
     с окном), приостановит действие скриптов, пока не нажмут ОК
 
     2.
-    promt( "title", value);
+    prompt( "title", value);
     Принимает два аргумента. Отобразит модальное окно, title - заголовок, [] - заранее введенное значение
 
     Для explorer лучше установить value "", потому что тогда по умолчанию установится undefined
@@ -481,3 +485,161 @@ document.getElementById("name-user").innerHTML = currentUserName;
     Модальное окно с вопросом и двумя кнопками, ОК и ОТМЕНА. При выводе вернет true или false
 
 */
+
+/* Условные операторы if и ?
+
+    if() вычислит условие в скобках, если true, то выполнит блок кода, преобразует к логическому типу
+
+    let currentYear = prompt("В каком году мы живем?","");
+    if( currentYear == 2020 );
+    alert("Верно!");
+
+    Если нужено вывести больше двух функций, то юзаем фигурные скобки
+
+    let currentYear = prompt("В каком году мы живем?","");
+    if( currentYear == 2020 ) {
+        alert("Верно!");
+        alert("Молодец");
+    }
+
+    Так же есть необязательный блок else или иначе, выполнится если условие ложно
+
+    let currentYear = prompt("В каком году мы живем?","");
+    if( currentYear === 2020 ) {
+        alert("Верно!");
+        alert("Молодец");
+    } else {
+        alert("Неправильно!");
+        alert("Ха-ха!")
+    }
+
+    2. Если нужно проверить несколько вариантов, то else if
+
+    let currentYear = prompt("В каком году мы живем?","");
+    if( currentYear < 2020 ) {
+        alert("Мы живем слегка позже");
+    } else if ( currentYear > 2020 ){
+        alert("Мы живем слегка раньше");
+    } else {
+        alert("В яблочко!")
+    }
+
+    3. Условный оператор ?
+
+    Иногда нам нужно задать значение переменной в зависимости от условия
+
+    let currentAge = prompt("Сколько вам лет?","");
+    let acceptAllowed;
+
+    if( currentAge < 18 ) {
+        acceptAllowed = "Вам рано это видеть";
+    } else {
+        acceptAllowed = "Добро пожаловать";
+    }
+
+    alert(acceptAllowed);
+
+    Так называемый условный оператор позволяет сделать это короче, его еще называют, тернарный.
+    Он единственный в своем роде и имеет три аргумента.
+
+    let result = условие ? значение1 : значение2;
+
+    Сначала вычислится условие, если оно истино, то переменной присвоится значение1, если нет,
+    то значение2.
+
+    let age = prompt("Сколько вам лет?","");
+    let acceptAllowed = ( age < 18 ) ? "Вам рано это видеть" : "Добро пожаловать";
+    alert(acceptAllowed);
+
+    Технически скобки мы можем опустить, т.к. у ? низкий приоритет и он выполнится после сравнения.
+    Но скобки сделают код более читабельным.
+
+    Последовательность нескольких операторов ? позволит вернуть значение, которое зависит более чем от
+    одного условия.
+
+    let age = prompt("Сколько вам лет?", "");
+    let message = (age < 5) ? "Привет малыш" :
+        (age < 18) ? "Привет":
+        (age < 100) ? "Здравствуйте" : "Очень необычный возраст";
+
+    alert(message)
+
+    Этот же вариант, но if, else if, else
+
+    let age = prompt("Сколько вам лет?","");
+    let message;
+
+    if( age < 5 ) {
+        message = "Привет малыш";
+    } else if( age < 18 ) {
+        message = "Привет";
+    } else if( age < 100 ){
+        message = "Здравствуйте";
+    } else {
+        message = "Какой необычный возраст"
+    }
+
+    alert(message);
+
+    4. Замена тернарным оператором if
+
+    let company = prompt("Сколько цветов во флаге Украины", "");
+
+    (company == 2) ?
+        alert("Верно") : alert("Неверно");
+
+    Но делать нам так крайтне не рекомендуется.
+
+    Задачки
+
+    let officialNameJS = prompt("Какое «официальное» название JavaScript?", "");
+
+    if( officialNameJS == "ECMAScript" ) {
+        alert("Верно!");
+    } else {
+        alert("Не знаете? ECMAScript!");
+    }
+
+    let value = prompt("Положительное ваше число, отрицательное или же равно нулю?", "");
+
+    if(value < 0 ){
+        alert("Отрицательное");
+    } else if(value > 0) {
+        alert("Положительное");
+    } else {
+        alert("Ноль");
+    }
+
+    let result = (a + b < 4) ? "Мало" : "Много";
+
+
+    let message;
+
+    if (login == 'Сотрудник') {
+        message = 'Привет';
+    } else if (login == 'Директор') {
+        message = 'Здравствуйте';
+    } else if (login == '') {
+        message = 'Нет логина';
+    } else {
+        message = '';
+    }
+
+    let login = prompt( "Ваш логин","" );
+
+    let message = ( login == "Сотрудник" ) ? "Привет" :
+    ( login == "Директор" ) ? "Здравствуйте" :
+    ( login == "" ) ? "Нет логина" : ""ж
+
+    Или же такой рабочий вариант
+
+
+
+    let message = ( login == "Сотрудник" ) ? "Привет" :
+        ( login == "Директор" ) ? "Здравствуйте" :
+            ( login == "" ) ? "Нет логина" : "Значение неккорректно";
+
+    alert(message);
+ */
+
+
