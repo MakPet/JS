@@ -1,10 +1,21 @@
 alert('Hello, World!');
 
 let currentUserName = prompt("Who is your name?", "Name");
-let resultName = ( currentUserName == "") ? "НеизвестныйПользователь" : currentUserName;
 
-document.getElementById("name-user").innerHTML = resultName;
+if( currentUserName === null ) {
+    currentUserName = "Неизвестный пользователь";
+} else if(currentUserName == "") {
+    currentUserName = "Неизвестный пользователь";
+}
 
+document.getElementById("name-user").innerHTML = currentUserName;
+
+/*let currentUserName = prompt("Who is your name?", "Name");
+
+let currentUserNameMessage = (currentUserName === null) ? "Неизвестный пользователь" :
+    (currentUserName === "") ? "Неизвестный пользователь" : currentUserName;
+
+document.getElementById("name-user").innerHTML = currentUserNameMessage;*/
 
 /*
         Итак, инструкции — синтаксические конструкции и команды, которые выполняют действия.
@@ -629,7 +640,7 @@ document.getElementById("name-user").innerHTML = resultName;
 
     let message = ( login == "Сотрудник" ) ? "Привет" :
     ( login == "Директор" ) ? "Здравствуйте" :
-    ( login == "" ) ? "Нет логина" : ""ж
+    ( login == "" ) ? "Нет логина" : ""
 
     Или же такой рабочий вариант
 
