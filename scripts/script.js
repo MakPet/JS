@@ -1385,3 +1385,5 @@ document.getElementById("name-user").innerHTML = currentUserNameMessage;*/
 
 */
 
+let a = 3 + 2;
+alert(a);
